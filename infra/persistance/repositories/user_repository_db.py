@@ -13,7 +13,7 @@ class UserRepositoryDb(UserRepository):
             except Exception as ex:
                 db.session.rollback()
                 raise ex
-
+    """
     def select_all(self):
         with DBConnectionHandler() as db:
             try:
@@ -39,3 +39,4 @@ class UserRepositoryDb(UserRepository):
         except Exception as ex:
             db.session.rollback()
             raise ex
+    """

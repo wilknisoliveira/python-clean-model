@@ -1,8 +1,5 @@
 from presenter import presenter
 from flask import request, jsonify
-from infra.persistance.repositories.user_repository_db import UserRepositoryDb
-
-# Controllers
 from application.use_cases.create_user_use_case import CreateUserUseCase
 
 route_base = '/users'
@@ -19,10 +16,16 @@ def create():
     name: str = data.get('name')
     email: str = data.get('email')
     password: str = data.get('password')
-    user_repository_db = UserRepositoryDb()
-    create_user_use_case = CreateUserUseCase(user_repository_db)
+
+    if not all([name, email, password]):
+        return jsonify({
+            "error": "Missing required fields"
+        }), 400
+
+
+    create_user_use_case = CreateUserUseCase()
 
     result = create_user_use_case.execute(name, email, password)
 
-    return result
+    return jsonify(result.__dict__), 201
 
