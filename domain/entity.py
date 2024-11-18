@@ -8,5 +8,6 @@ class Entity:
     updated_at = Column(DateTime, nullable=False)
 
     def __init__(self):
-        self.created_at: datetime = datetime.UTC
-        self.updated_at: datetime = datetime.UTC
+        now = datetime.datetime.now(datetime.timezone.utc)
+        self.created_at: datetime = now
+        self.updated_at: datetime = now

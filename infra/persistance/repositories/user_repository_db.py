@@ -14,7 +14,6 @@ class UserRepositoryDb(UserRepository):
                 db.session.rollback()
                 raise ex
 
-
     def select_all(self):
         with DBConnectionHandler() as db:
             try:
