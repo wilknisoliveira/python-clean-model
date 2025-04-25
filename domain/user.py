@@ -15,4 +15,6 @@ class User(Entity, Base):
         self.email: str = email
         self.password: str = password
 
+    # Use Rich Entity approach, keeping all the business logic inside the Domain Layer.
+
 
